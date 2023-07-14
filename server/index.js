@@ -1,11 +1,4 @@
-import { Configuration, OpenAIApi } from "openai";
-import dotenv from "dotenv";
-dotenv.config();
-
-const configuration = new Configuration({
-  apiKey: process.env.OPEN_AI_KEY
-});
-const openai = new OpenAIApi(configuration);
+import openai from "./configure/open-ai.js";
 
 async function main () {
   const chatCompletion = openai.createChatCompletion({
@@ -15,7 +8,7 @@ async function main () {
     ] 
   });
 
-  console.log(chatCompletion.data.choices[0]);
+  console.log(chatCompletion.data.messages.content);
 };
 
 main();
