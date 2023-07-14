@@ -1,14 +1,10 @@
 import openai from "./configure/open-ai.js";
+import readlineSync from "readline-sync";
+import colors from "colors";
 
 async function main () {
-  const chatCompletion = openai.createChatCompletion({
-    model: "gpt-3.5-turbo",
-    messages: [
-        { role: "user", content: "What is the capitol of the Serbia?"}
-    ] 
-  });
-
-  console.log(chatCompletion.data.messages.content);
+  const userName = readlineSync.question('What is your name?');
+  console.log(`Hello ${userName}`)
 };
 
 main();
